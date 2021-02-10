@@ -44,7 +44,15 @@ class _QuoteListState extends State<QuoteList> {
         //SECOND BUILD
         // children: quotes.map((q) => quoteTemplate(q)).toList(),
         //THIRD BUILD
-        children: quotes.map((q) => QuoteCard(quote: q)).toList(),
+        children: quotes
+            .map((q) => QuoteCard(
+                quote: q,
+                delete: () {
+                  setState(() {
+                    quotes.remove(q);
+                  });
+                }))
+            .toList(),
       ),
     );
   }
